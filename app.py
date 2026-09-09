@@ -51,10 +51,10 @@ location_data = {
 # SIDEBAR - ENVIRONMENTAL CONDITIONS
 # ============================================================
 
-st.sidebar.header("🌤️ Environmental Conditions")
+st.sidebar.header(" Environmental Conditions")
 
 location = st.sidebar.selectbox(
-    "📍 Monitoring Location",
+    " Monitoring Location",
     list(location_data.keys())
 )
 
@@ -213,25 +213,25 @@ risk_message = get_risk_message(risk_level)
 # Emergency heat alert
 if risk_level == "Extreme":
     st.error(
-        "🚨 EXTREME HEAT ALERT: Immediate protective action is required. "
+        " EXTREME HEAT ALERT: Immediate protective action is required. "
         "Avoid outdoor activity, stay hydrated, and move to a cool location."
     )
 
 elif risk_level == "High":
     st.warning(
-        "⚠️ HIGH HEAT ALERT: Heat-related illness risk is high. "
+        " HIGH HEAT ALERT: Heat-related illness risk is high. "
         "Avoid prolonged outdoor exposure and stay hydrated."
     )
 
 elif risk_level == "Moderate":
     st.info(
-        "🟡 MODERATE HEAT ALERT: Take precautions, stay hydrated, "
+        " MODERATE HEAT ALERT: Take precautions, stay hydrated, "
         "and limit strenuous outdoor activity."
     )
 
 else:
     st.success(
-        "🟢 LOW HEAT RISK: Current conditions are relatively safe. "
+        " LOW HEAT RISK: Current conditions are relatively safe. "
         "Continue normal precautions."
     )
 
@@ -245,7 +245,7 @@ mortality_risk = calculate_mortality_risk(
 # HEADER
 # ============================================================
 
-st.title("🌡️ Heatwave Health Risk & Safety System")
+st.title(" Heatwave Health Risk & Safety System")
 
 st.subheader("Advanced Heatwave Monitoring Dashboard")
 
@@ -262,31 +262,31 @@ st.write(
 
 st.divider()
 
-st.subheader(f"📍 Current Conditions - {location}")
+st.subheader(f" Current Conditions - {location}")
 
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.metric(
-        "🌡️ Temperature",
+        " Temperature",
         f"{temperature:.1f} °C"
     )
 
 with col2:
     st.metric(
-        "💧 Humidity",
+        " Humidity",
         f"{humidity:.0f} %"
     )
 
 with col3:
     st.metric(
-        "💨 Wind Speed",
+        " Wind Speed",
         f"{wind:.1f} m/s"
     )
 
 with col4:
     st.metric(
-        "☀️ Solar Radiation",
+        " Solar Radiation",
         f"{solar:.0f} W/m²"
     )
 
@@ -295,16 +295,16 @@ with col4:
 # CURRENT HEAT RISK
 # ============================================================
 
-st.subheader("🚨 Current Heat Risk")
+st.subheader(" Current Heat Risk")
 
 if risk_level == "Low":
-    st.success(f"🟢 {risk_level} Risk")
+    st.success(f" {risk_level} Risk")
 elif risk_level == "Moderate":
-    st.warning(f"🟡 {risk_level} Risk")
+    st.warning(f" {risk_level} Risk")
 elif risk_level == "High":
-    st.error(f"🔴 {risk_level} Risk")
+    st.error(f" {risk_level} Risk")
 else:
-    st.error(f"🚨 {risk_level} Risk")
+    st.error(f" {risk_level} Risk")
 
 st.write(risk_message)
 
@@ -318,7 +318,7 @@ st.metric(
 # MORTALITY RISK INDEX
 # ============================================================
 
-st.subheader("🫀 Mortality Risk Index")
+st.subheader(" Mortality Risk Index")
 
 st.metric(
     "Estimated Mortality Risk",
@@ -330,7 +330,7 @@ st.metric(
 # SAFETY ADVISORY
 # ============================================================
 
-st.subheader("🛡️ Recommended Safety Actions")
+st.subheader(" Recommended Safety Actions")
 
 if risk_level == "Low":
 
@@ -367,7 +367,7 @@ else:
 
 st.divider()
 
-st.subheader("📊 5-Day Forecast Risk")
+st.subheader(" 5-Day Forecast Risk")
 
 
 forecast_days = [
@@ -511,7 +511,7 @@ for i, day in enumerate(forecast_days):
 forecast_df = pd.DataFrame(
     forecast_data
 )
-st.subheader("📅 5-Day Heat Risk Forecast")
+st.subheader(" 5-Day Heat Risk Forecast")
 
 st.dataframe(
     forecast_df[
@@ -528,12 +528,12 @@ st.dataframe(
     use_container_width=True,
     hide_index=True
 )
-st.subheader("📈 Heat Risk Trend")
+st.subheader(" Heat Risk Trend")
 
 st.line_chart(
     forecast_df.set_index("Day")["Heatwave Score"]
 )
-st.subheader("⚕️ Mortality Risk Trend")
+st.subheader(" Mortality Risk Trend")
 
 st.line_chart(
     forecast_df.set_index("Day")["Mortality Risk"]
@@ -556,7 +556,7 @@ st.dataframe(
 # FORECAST HEAT RISK GRAPH
 # ============================================================
 
-st.subheader("📊 Forecast Heat Risk")
+st.subheader(" Forecast Heat Risk")
 
 fig_forecast = px.line(
     forecast_df,
@@ -594,7 +594,7 @@ st.plotly_chart(
 # 5-DAY TEMPERATURE FORECAST
 # ============================================================
 
-st.subheader("🌡️ 5-Day Temperature Forecast")
+st.subheader(" 5-Day Temperature Forecast")
 
 fig_temperature = px.line(
     forecast_df,
@@ -622,7 +622,7 @@ st.plotly_chart(
 # 5-DAY HUMIDITY FORECAST
 # ============================================================
 
-st.subheader("💧 5-Day Humidity Forecast")
+st.subheader(" 5-Day Humidity Forecast")
 
 fig_humidity = px.line(
     forecast_df,
@@ -650,7 +650,7 @@ st.plotly_chart(
 # 5-DAY MORTALITY RISK FORECAST
 # ============================================================
 
-st.subheader("🫀 5-Day Mortality Risk Forecast")
+st.subheader(" 5-Day Mortality Risk Forecast")
 
 fig_mortality = px.line(
     forecast_df,
@@ -678,7 +678,7 @@ st.plotly_chart(
 # RISK SUMMARY
 # ============================================================
 
-st.subheader("📌 Risk Summary")
+st.subheader(" Risk Summary")
 
 highest_score = forecast_df["Heatwave Score"].max()
 highest_day = forecast_df.loc[
@@ -704,7 +704,7 @@ st.write(
 # EARLY WARNING ALERT
 # ============================================================
 
-st.subheader("🚨 Early Warning Alert")
+st.subheader(" Early Warning Alert")
 
 max_score = forecast_df["Heatwave Score"].max()
 alert_day = forecast_df.loc[
@@ -713,12 +713,12 @@ alert_day = forecast_df.loc[
 
 if max_score >= 75:
     st.error(
-        f"🚨 EXTREME HEAT WARNING: Forecast heatwave score may reach "
+        f" EXTREME HEAT WARNING: Forecast heatwave score may reach "
         f"{max_score:.1f} on {alert_day}. Immediate preventive action is recommended."
     )
 elif max_score >= 50:
     st.warning(
-        f"⚠️ HEAT WARNING: Elevated heat conditions are expected, "
+        f" HEAT WARNING: Elevated heat conditions are expected, "
         f"with the highest score of {max_score:.1f} on {alert_day}."
     )
 else:
@@ -732,7 +732,7 @@ else:
 # SAFETY RECOMMENDATIONS
 # ============================================================
 
-st.subheader("🛡️ Safety Recommendations")
+st.subheader(" Safety Recommendations")
 
 risk = str(forecast_df.iloc[0]["Risk Level"]).lower()
 temperature = forecast_df.iloc[0]["Temperature (°C)"]
@@ -740,7 +740,7 @@ humidity = forecast_df.iloc[0]["Humidity (%)"]
 
 if risk == "high" or temperature >= 35:
     st.warning(
-        "⚠️ HIGH HEAT RISK: Heat-related illness risk is elevated. "
+        " HIGH HEAT RISK: Heat-related illness risk is elevated. "
         "Avoid prolonged outdoor exposure and stay hydrated."
     )
 
@@ -763,7 +763,7 @@ else:
 
 st.divider()
 
-st.subheader("📍 Ward / Zone-Level Heat Risk")
+st.subheader(" Ward / Zone-Level Heat Risk")
 
 # Demo ward-level data for localized monitoring
 # These values can later be replaced with real ward sensor/API data
@@ -807,7 +807,7 @@ highest_zone = ward_data.loc[
 highest_zone_score = ward_data["Heatwave Score"].max()
 
 st.warning(
-    f"🚨 Highest-risk zone: {highest_zone} "
+    f" Highest-risk zone: {highest_zone} "
     f"(Heatwave Score: {highest_zone_score})"
 )
 
@@ -817,7 +817,7 @@ st.warning(
 
 st.divider()
 
-st.subheader("🚨 Heatwave Alert System")
+st.subheader(" Heatwave Alert System")
 
 if highest_zone_score >= 75:
     alert_level = "EXTREME"
@@ -830,14 +830,14 @@ else:
 
 if alert_level == "EXTREME":
     st.error(
-        f"🚨 EXTREME HEAT ALERT\n\n"
+        f" EXTREME HEAT ALERT\n\n"
         f"{highest_zone} requires immediate attention. "
         f"Activate emergency heat-response measures."
     )
 
 elif alert_level == "HIGH":
     st.warning(
-        f"⚠️ HIGH HEAT ALERT\n\n"
+        f" HIGH HEAT ALERT\n\n"
         f"{highest_zone} is currently at high heat risk. "
         f"Preventive measures should be activated."
     )
@@ -862,7 +862,7 @@ st.write("• Continue real-time heat-risk monitoring")
 
 st.divider()
 
-st.subheader("🗺️ Localized Heat Risk Monitoring")
+st.subheader(" Localized Heat Risk Monitoring")
 
 # Approximate city coordinates for dashboard demonstration
 map_data = pd.DataFrame(
@@ -954,7 +954,7 @@ st.plotly_chart(
 # ACTIONABLE HEAT ACTION PLAN
 # ============================================================
 
-st.subheader("🏥 Recommended Heat Action Plan")
+st.subheader(" Recommended Heat Action Plan")
 
 if risk_level in ["High", "Extreme"]:
 
@@ -985,7 +985,7 @@ for action in actions:
 
 st.divider()
 
-st.subheader("🚨 Emergency Heat Alert")
+st.subheader(" Emergency Heat Alert")
 
 if highest_score >= 75:
     st.error(
@@ -1021,7 +1021,7 @@ st.caption(
 
 st.divider()
 
-st.subheader("👥 Vulnerable Population Monitoring")
+st.subheader(" Vulnerable Population Monitoring")
 
 vulnerable_data = pd.DataFrame({
     "Group": [
